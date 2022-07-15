@@ -12,20 +12,11 @@ export class MembersComponent implements OnInit {
 
 
   members: Member[];
-  selectedMember: Member;
 
-  constructor(
-    private memberService: MemberService,
-    private messageService: MessageService
-    ) { }
+  constructor(private memberService: MemberService,) { }
 
   ngOnInit(): void { //外部から取得の際はngOnInit()で行う
     this.getMembers(); //member一覧取得
-  }
-
-  onSelect(member: Member): void {
-    this.selectedMember = member;
-    this.messageService.add(`MembersComponent: 社員データ(id=${member.id}が選択されました。`);
   }
 
   getMembers(): void {
@@ -33,6 +24,5 @@ export class MembersComponent implements OnInit {
       .subscribe(members => this.members = members);
 
   }
-
 }
 
